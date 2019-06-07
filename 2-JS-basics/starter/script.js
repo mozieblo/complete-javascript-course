@@ -76,4 +76,31 @@ function challenge2(){
 }
 challenge2();
 
+//challegne3
 
+function challenge3() {
+    var restaurantBills = [124, 48, 268];
+
+    var i;
+    var tipsFor3 = [];
+    var tipsAndBills = [];
+
+    function tipCalculator(arrayBills) {
+        if (arrayBills > 200) {
+            return (arrayBills * 10) / 100;
+        } else if (arrayBills <= 200 && arrayBills > 50) {
+            return (arrayBills * 15) / 100;
+        } else {
+            return (arrayBills * 20) / 100;
+        }
+    }
+    for (i = 0; i < restaurantBills.length; i++) {
+        tipsFor3[i] = tipCalculator(restaurantBills[i]);
+        tipsAndBills[i] = tipCalculator(restaurantBills[i]) + restaurantBills[i];
+    }
+
+    console.log(tipsFor3);
+    console.log(tipsAndBills);
+}
+
+challenge3();
