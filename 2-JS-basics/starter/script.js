@@ -51,22 +51,22 @@ function challenge2(){
     switch (true) {
 
         case averAgeScoreTeamJohn > averAgeScoreTeamMike && averAgeScoreTeamJohn > averAgeScoreTeamMary:
-            console.log('John\'s team is a winner!');
+            console.log('John\'s team is a winner! With ' + averAgeScoreTeamJohn + ' points !');
             break;
         case averAgeScoreTeamMike > averAgeScoreTeamJohn && averAgeScoreTeamMike > averAgeScoreTeamMary:
-            console.log('Mike\'s team is a winner!');
+            console.log('Mike\'s team is a winner! With ' + averAgeScoreTeamMike + ' points !');
             break;
         case averAgeScoreTeamMary > averAgeScoreTeamMike && averAgeScoreTeamMary > averAgeScoreTeamJohn:
-            console.log('Mary\'s team is a winner!');
+            console.log('Mary\'s team is a winner! With ' + averAgeScoreTeamMary + ' points !');
             break;
         case averAgeScoreTeamMary === averAgeScoreTeamMike && averAgeScoreTeamMary > averAgeScoreTeamJohn:
-            console.log('Both Mary and Mike wins!');
+            console.log('Both Mary and Mike wins!' + ' With ' + averAgeScoreTeamMary + ' points!');
             break;
         case averAgeScoreTeamJohn === averAgeScoreTeamMary && averAgeScoreTeamMary > averAgeScoreTeamMike:
-            console.log('Both Mary and John wins!');
+            console.log('Both Mary and John wins!'+ ' With ' + averAgeScoreTeamMary + ' points!');
             break;
         case averAgeScoreTeamJohn === averAgeScoreTeamMike && averAgeScoreTeamMike > averAgeScoreTeamMary:
-            console.log('Both Mike and John wins!');
+            console.log('Both Mike and John wins!' + ' With ' + averAgeScoreTeamMike + ' points!');
             break;
         default:
             console.log('It\s looks like draw!');
