@@ -226,3 +226,75 @@ function challenge5(){
 }
 challenge5();
 
+//Challenge5 better version
+
+function challenge5better(){
+    var john = {
+        fullName: 'John Smith',
+        bills: [124, 48, 268, 180, 42],
+        calculateTips: function(){
+            this.tip = [];
+            this.fullBill = [];
+            for(let i=0; i < this.bills.length; i++){
+                let percentage;
+                let bill = this.bills[i];
+                if(bill > 200){
+                    percentage = .10;
+                } else if (bill <= 200 && bill > 50){
+                    percentage = .15;
+                } else {
+                    percentage = .20;
+                }
+                this.tip[i] = percentage * bill;
+                this.fullBill[i] = bill + percentage * bill;
+            }
+        }
+    };
+
+    var mark = {
+        fullName: 'Mark Gilenhall',
+        bills: [77, 375, 110, 45],
+    calculateTips: function(){
+        this.tip = [];
+        this.fullBill = [];
+        for(let i=0; i < this.bills.length; i++){
+            let percentage;
+            let bill = this.bills[i];
+            if(bill > 300){
+                percentage = .25;
+            } else if (bill <= 300 && bill > 100){
+                percentage = .10;
+            } else {
+                percentage = .20;
+            }
+            this.tip[i] = percentage * bill;
+            this.fullBill[i] = bill + percentage * bill;
+        }
+    }
+};
+    john.calculateTips();
+    mark.calculateTips();
+
+    function averAgeTips(tips){
+        let sum = 0;
+        for (let i=0; i < tips.length; i++){
+            sum += tips[i];
+        }
+        return sum/tips.length;
+    }
+
+    john.average = averAgeTips(john.tip);
+    mark.average = averAgeTips(mark.tip);
+    console.log(john);
+    console.log(mark);
+
+    if ( john.average > mark.average ){
+        console.log('Johns family give big tips');
+    } else if (mark.average  >  john.average){
+        console.log('MArks family give big tips');
+    } else {
+        console.log('Marks and Johns family give the same tips');
+    }
+
+}
+challenge5better();
