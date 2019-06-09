@@ -116,6 +116,7 @@ function challenge4(){
         heightMark: 1.67,
         bodyMassIndex: function(){
             this.bmi = this.massMark/(this.heightMark*this.heightMark);
+            return this.bmi;
         }
     };
     bmiMark.bodyMassIndex();
@@ -126,9 +127,11 @@ function challenge4(){
         heightJohn: 2.09,
         bodyMassIndex: function () {
              this.bmi = this.massJohn / (this.heightJohn * this.heightJohn);
+             return this.bmi;
         }
     };
     bmiJohn.bodyMassIndex();
+
 
     if (bmiMark.bmi > bmiJohn.bmi){
         console.log(bmiMark.firstName + ' ' + bmiMark.lastName + ' BMI is higher ' + bmiMark.bmi + ' than ' + bmiJohn.bmi + bmiJohn.firstName + ' ' + bmiJohn.lastName);
