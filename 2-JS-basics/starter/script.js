@@ -139,3 +139,89 @@ function challenge4(){
     }
 }
 challenge4();
+
+//challenge5
+
+function challenge5(){
+
+    var billsJohnsFamily = {
+        restaurantBills: [124, 48, 268, 180, 42],
+        tips: [],
+        tipsAndBills: [],
+        calculateTips: function(arraytips) {
+            if (arraytips > 200) {
+                return (arraytips * 10) / 100;
+
+            } else if (arraytips <= 200 && arraytips > 50) {
+                return (arraytips * 15) / 100;
+
+            } else {
+                return (arraytips * 20) / 100;
+            }
+        },
+
+        saveTipsAndBills: function() {
+
+            for (let i = 0; i < this.restaurantBills.length; i++) {
+                this.tips[i] = this.calculateTips(this.restaurantBills[i]);
+                this.tipsAndBills[i] = this.calculateTips(this.restaurantBills[i]) + this.restaurantBills[i];
+            }
+        }
+    };
+    billsJohnsFamily.saveTipsAndBills();
+    console.log(billsJohnsFamily.tips);
+    console.log(billsJohnsFamily.tipsAndBills);
+
+    var billsMarksFamily = {
+        restaurantBills: [77, 375, 110, 45],
+        tips: [],
+        tipsAndBills: [],
+        calculateTips: function(arraytips) {
+            if (arraytips > 300) {
+                return (arraytips * 25) / 100;
+
+            } else if (arraytips <= 300 && arraytips > 100) {
+                return (arraytips * 10) / 100;
+
+            } else {
+                return (arraytips * 20) / 100;
+            }
+        },
+
+        saveTipsAndBills: function() {
+
+            for (let i = 0; i < this.restaurantBills.length; i++) {
+                this.tips[i] = this.calculateTips(this.restaurantBills[i]);
+                this.tipsAndBills[i] = this.calculateTips(this.restaurantBills[i]) + this.restaurantBills[i];
+            }
+        }
+    };
+    billsMarksFamily.saveTipsAndBills();
+    console.log(billsMarksFamily.tips);
+    console.log(billsMarksFamily.tipsAndBills);
+
+    function averageTips(tipsi){
+        let summarry = 0;
+        for (let i=0; i < tipsi.length-1 ; i++){
+            summarry += tipsi[i];
+        }
+        return summarry/tipsi.length;
+
+    }
+
+    var agerageJohns = averageTips(billsJohnsFamily.tips);
+    var averageMarks = averageTips(billsMarksFamily.tips);
+    console.log(agerageJohns);
+    console.log(averageMarks);
+
+    if (agerageJohns > averageMarks ){
+            console.log('Johns family give big tips');
+    } else if (averageMarks  > agerageJohns){
+        console.log('MArks family give big tips');
+    } else {
+        console.log('Marks and Johns family give the same tips');
+    }
+
+
+}
+challenge5();
