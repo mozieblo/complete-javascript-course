@@ -104,3 +104,38 @@ function challenge3() {
 }
 
 challenge3();
+
+//challenge4
+
+function challenge4(){
+
+    var bmiMark = {
+        firstName: 'Mark',
+        lastName: 'Bobo',
+        massMark: 65,
+        heightMark: 1.67,
+        bodyMassIndex: function(){
+            this.bmi = this.massMark/(this.heightMark*this.heightMark);
+        }
+    };
+    bmiMark.bodyMassIndex();
+    var bmiJohn = {
+        firstName: 'John',
+        lastName: 'Smith',
+        massJohn: 90,
+        heightJohn: 2.09,
+        bodyMassIndex: function () {
+             this.bmi = this.massJohn / (this.heightJohn * this.heightJohn);
+        }
+    };
+    bmiJohn.bodyMassIndex();
+
+    if (bmiMark.bmi > bmiJohn.bmi){
+        console.log(bmiMark.firstName + ' ' + bmiMark.lastName + ' BMI is higher ' + bmiMark.bmi + ' than ' + bmiJohn.bmi + bmiJohn.firstName + ' ' + bmiJohn.lastName);
+    } else if (bmiJohn.bmi > bmiMark.bmi){
+        console.log(bmiJohn.firstName + ' ' + bmiJohn.lastName + ' BMI is higher ' + bmiJohn.bmi + ' than ' + bmiMark.bmi + bmiMark.firstName + ' ' + bmiMark.lastName);
+    } else {
+        console.log('Both BMI are equal');
+    }
+}
+challenge4();
