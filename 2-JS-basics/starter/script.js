@@ -119,7 +119,6 @@ function challenge4(){
             return this.bmi;
         }
     };
-    bmiMark.bodyMassIndex();
     var bmiJohn = {
         firstName: 'John',
         lastName: 'Smith',
@@ -130,10 +129,8 @@ function challenge4(){
              return this.bmi;
         }
     };
-    bmiJohn.bodyMassIndex();
 
-
-    if (bmiMark.bmi > bmiJohn.bmi){
+    if (bmiMark.bodyMassIndex() > bmiJohn.bodyMassIndex()){
         console.log(bmiMark.firstName + ' ' + bmiMark.lastName + ' BMI is higher ' + bmiMark.bmi + ' than ' + bmiJohn.bmi + bmiJohn.firstName + ' ' + bmiJohn.lastName);
     } else if (bmiJohn.bmi > bmiMark.bmi){
         console.log(bmiJohn.firstName + ' ' + bmiJohn.lastName + ' BMI is higher ' + bmiJohn.bmi + ' than ' + bmiMark.bmi + bmiMark.firstName + ' ' + bmiMark.lastName);
