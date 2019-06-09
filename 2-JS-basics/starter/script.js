@@ -209,14 +209,14 @@ function challenge5(){
 
     }
 
-    var agerageJohns = averageTips(billsJohnsFamily.tips);
+    var averageJohns = averageTips(billsJohnsFamily.tips);
     var averageMarks = averageTips(billsMarksFamily.tips);
-    console.log(agerageJohns);
+    console.log(averageJohns);
     console.log(averageMarks);
 
-    if (agerageJohns > averageMarks ){
+    if (averageJohns > averageMarks ){
             console.log('Johns family give big tips');
-    } else if (averageMarks  > agerageJohns){
+    } else if (averageMarks  > averageJohns){
         console.log('MArks family give big tips');
     } else {
         console.log('Marks and Johns family give the same tips');
@@ -225,3 +225,4 @@ function challenge5(){
 
 }
 challenge5();
+
