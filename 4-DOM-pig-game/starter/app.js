@@ -16,11 +16,27 @@ roundScore = 0;
 activPlayer = 0;
 
 document.querySelector('.dice').style.display = 'none';
-
 document.getElementById('score-0').textContent = '0';
 document.getElementById('score-1').textContent = '0';
 document.getElementById('current-0').textContent = '0';
 document.getElementById('current-1').textContent = '0';
+
+
+function resetScore(){
+
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+    document.getElementById('score-0').style.marginBottom = '130px';
+    document.getElementById('score-1').style.marginBottom = '130px';
+    scores = [0, 0];
+    roundScore = 0;
+    activPlayer =0;
+    document.querySelector('.dice').style.display = 'none';
+}
+
+document.querySelector('.btn-new').addEventListener('click', resetScore);
 
 document.querySelector('.btn-roll').addEventListener('click', function(){
 
@@ -48,21 +64,25 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         roundScore = 0;
     }
     document.getElementById('current-' + activPlayer).textContent = roundScore;
+    if (scores[0] >= 100){
+        document.getElementById('score-0').style.marginBottom = '35px';
+        document.getElementById('score-0').innerHTML = scores[0] + '<br>WINNER!</br>';
+    } else if (scores[1] >=100){
+        document.getElementById('score-1').innerHTML = scores[1] + '<br>WINNER!</br>';
+        document.getElementById('score-1').style.marginBottom = '35px';
+    } else {
+
+    }
+
 });
 
 function changeActivPlayer(){
     switch (true) {
         case roundScore === 0 && activPlayer === 0:
             activPlayer = 1;
-            console.log(roundScore);
-            console.log(activPlayer);
-            console.log("case1");
             break;
         case roundScore === 0 && activPlayer === 1:
             activPlayer = 0;
-            console.log(roundScore);
-            console.log(activPlayer);
-            console.log("case2");
             break;
         default:
             break;
@@ -71,6 +91,8 @@ function changeActivPlayer(){
 
 document.querySelector('.btn-roll').addEventListener('click', changeActivPlayer);
 document.querySelector('.btn-hold').addEventListener('click', changeActivPlayer);
+
+
 
 //document.querySelector('#current-' + activPlayer).textContent = dice;
 //document.querySelector('#current-' + activPlayer).innerHTML = "<em><b>" + dice + "</b></em>";
