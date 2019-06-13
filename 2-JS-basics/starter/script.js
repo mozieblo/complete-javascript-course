@@ -298,3 +298,6 @@ function challenge5better(){
 
 }
 challenge5better();
+
+
+console.log(this);
