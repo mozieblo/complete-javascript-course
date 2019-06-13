@@ -28,12 +28,16 @@ function resetScore(){
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
-    document.getElementById('score-0').style.marginBottom = '130px';
-    document.getElementById('score-1').style.marginBottom = '130px';
     scores = [0, 0];
     roundScore = 0;
     activPlayer =0;
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.player-0-panel').classList.add('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.getElementById('name-0').textContent = 'PLAYER 1';
+    document.getElementById('name-1').textContent = 'PLAYER 2';
 }
 
 document.querySelector('.btn-new').addEventListener('click', resetScore);
@@ -50,11 +54,16 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
             roundScore = 0;
     }
     document.getElementById('current-' + activPlayer).textContent = roundScore;
-
+    changeActivPlayer();
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function(){
-    if (activPlayer === 0) {
+
+    scores[activPlayer] += roundScore;
+    document.getElementById('score-' + activPlayer).textContent = scores[activPlayer];
+    roundScore = 0;
+
+    /*if (activPlayer === 0) {
         scores[0] += roundScore;
         document.getElementById('score-' + activPlayer).textContent = scores[0];
         roundScore = 0;
@@ -62,9 +71,18 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         scores[1] += roundScore;
         document.getElementById('score-' + activPlayer).textContent = scores[1];
         roundScore = 0;
-    }
+    }*/
     document.getElementById('current-' + activPlayer).textContent = roundScore;
-    if (scores[0] >= 100){
+    if (scores[activPlayer] >= 100) {
+        document.getElementById('name-' + activPlayer).textContent = 'WINNER!';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activPlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activPlayer + '-panel').classList.remove('active');
+    } else {
+        changeActivPlayer();
+    }
+
+    /*if (scores[0] >= 100){
         document.getElementById('score-0').style.marginBottom = '35px';
         document.getElementById('score-0').innerHTML = scores[0] + '<br>WINNER!</br>';
     } else if (scores[1] >=100){
@@ -72,7 +90,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         document.getElementById('score-1').style.marginBottom = '35px';
     } else {
 
-    }
+    }*/
 
 });
 
@@ -80,17 +98,25 @@ function changeActivPlayer(){
     switch (true) {
         case roundScore === 0 && activPlayer === 0:
             activPlayer = 1;
+            document.querySelector('.player-1-panel').classList.toggle('active');
+            document.querySelector('.player-0-panel').classList.toggle('active');
+           // document.querySelector('.player-0-panel').classList.remove('active');
+           // document.querySelector('.player-1-panel').classList.add('active');
             break;
         case roundScore === 0 && activPlayer === 1:
             activPlayer = 0;
+            document.querySelector('.player-0-panel').classList.toggle('active');
+            document.querySelector('.player-1-panel').classList.toggle('active');
+           // document.querySelector('.player-1-panel').classList.remove('active');
+            // document.querySelector('.player-0-panel').classList.add('active');
             break;
         default:
             break;
     }
 }
 
-document.querySelector('.btn-roll').addEventListener('click', changeActivPlayer);
-document.querySelector('.btn-hold').addEventListener('click', changeActivPlayer);
+//document.querySelector('.btn-roll').addEventListener('click', changeActivPlayer);
+//document.querySelector('.btn-hold').addEventListener('click', changeActivPlayer);
 
 
 
