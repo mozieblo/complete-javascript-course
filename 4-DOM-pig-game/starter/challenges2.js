@@ -9,7 +9,7 @@ of 100. (Hint: you can read that value with the .value property in JavaScript. T
 3. Add another dice to the game, so that there are two dices now. The player looses his current score when one of
 them is a 1. (Hint: you will need CSS to position the second dice, so take a look at the CSS code for the first one.)
 */
-var scores, roundScore, activPlayer, gamePlaying, previousDice, i, playersScore;
+var scores, roundScore, activPlayer, gamePlaying, previousDice, i;
 
 init();
 
@@ -20,7 +20,6 @@ function init(){
     previousDice = [];
     i = 0;
     gamePlaying = true;
-    playersScore = prompt('Enter the winning number');
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
@@ -72,10 +71,17 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         roundScore = 0;
         i = 0;
         previousDice = [];
-        
+        var input = document.querySelector('.final-score').value;
+        var winningScore;
+
+        if(input) {
+            winningScore = input;
+        } else {
+            winningScore = 100;
+        }
 
         document.getElementById('current-' + activPlayer).textContent = roundScore;
-        if (scores[activPlayer] >= playersScore) {
+        if (scores[activPlayer] >= winningScore) {
             document.getElementById('name-' + activPlayer).textContent = 'WINNER!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activPlayer + '-panel').classList.add('winner');
