@@ -9,7 +9,7 @@ of 100. (Hint: you can read that value with the .value property in JavaScript. T
 3. Add another dice to the game, so that there are two dices now. The player looses his current score when one of
 them is a 1. (Hint: you will need CSS to position the second dice, so take a look at the CSS code for the first one.)
 */
-var scores, roundScore, activPlayer, gamePlaying, previousDice, i;
+var scores, roundScore, activPlayer, gamePlaying;
 
 init();
 
@@ -17,14 +17,13 @@ function init(){
     scores = [0, 0];
     roundScore = 0;
     activPlayer =0;
-    previousDice = [];
-    i = 0;
     gamePlaying = true;
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice2').style.display = 'none';
     document.querySelector('.player-0-panel').classList.remove('winner');
     document.querySelector('.player-1-panel').classList.remove('winner');
     document.querySelector('.player-0-panel').classList.remove('active');
@@ -39,18 +38,18 @@ document.querySelector('.btn-new').addEventListener('click', init);
 document.querySelector('.btn-roll').addEventListener('click', function(){
     if(gamePlaying){
         var dice = Math.floor(Math.random() * 6) +1;
+        var dice2 = Math.floor(Math.random() * 6) +1;
         var diceDOM = document.querySelector('.dice');
+        var dice2DOM = document.querySelector('.dice2');
         diceDOM.style.display = 'block';
+        dice2DOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
-        if (dice !== 1){
-            roundScore += dice;
-            previousDice[i] = dice;
-            i++;
-            if (dice ===6 && previousDice[previousDice.length-1] === previousDice[previousDice.length-2]){
-                roundScore = 0;
-                i = 0;
-                previousDice = [];
+        dice2DOM.src = 'dice-' + dice2 + '.png';
+        if (dice !== 1 && dice2 !== 1){
+            roundScore += dice + dice2;
+            if (dice === 6 && dice2 === 6){
                 scores[activPlayer] = 0;
+                roundScore = 0;
                 document.getElementById('score-' + activPlayer).textContent = scores[activPlayer];
             }
         } else {
@@ -59,8 +58,6 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         document.getElementById('current-' + activPlayer).textContent = roundScore;
         changeActivPlayer();
     }
-    console.log(previousDice);
-
 });
 
 
@@ -69,8 +66,6 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         scores[activPlayer] += roundScore;
         document.getElementById('score-' + activPlayer).textContent = scores[activPlayer];
         roundScore = 0;
-        i = 0;
-        previousDice = [];
         var input = document.querySelector('.final-score').value;
         var winningScore;
 

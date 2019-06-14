@@ -56,6 +56,8 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
             }
         } else {
             roundScore = 0;
+            i = 0;
+            previousDice = [];
         }
         document.getElementById('current-' + activPlayer).textContent = roundScore;
         changeActivPlayer();
@@ -72,7 +74,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         roundScore = 0;
         i = 0;
         previousDice = [];
-        
+
 
         document.getElementById('current-' + activPlayer).textContent = roundScore;
         if (scores[activPlayer] >= playersScore) {
