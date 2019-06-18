@@ -393,7 +393,7 @@ c) correct answer (I would use a number for this)
 */
 
 
-/*
+
 (function() {
     function Question(question, answers, correct) {
         this.question = question;
@@ -472,4 +472,3 @@ c) correct answer (I would use a number for this)
     nextQuestion();
     
 })();
-*/
