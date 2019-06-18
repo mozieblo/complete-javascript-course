@@ -64,7 +64,7 @@ So make sure that all your code is private and doesn't interfere with the other 
         }
     };
     questionArr[n].checkIfCorrect(userAnswer);
-console.log(questionArr);
+
 
 })();
 
