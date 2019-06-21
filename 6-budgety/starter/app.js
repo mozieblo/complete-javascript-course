@@ -93,7 +93,11 @@ var UIController = (function(){
         inputValue: '.add__value',
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
-        expensesContainer: '.expenses__list'
+        expensesContainer: '.expenses__list',
+        budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expensesLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage'
     };
 
         return {
@@ -127,7 +131,7 @@ var UIController = (function(){
                     element = DOMstrings.expensesContainer;
 
                     html = '<div class="item clearfix" id="expense-%id%">\n' +
-                        '                            <div class="item__description">A%description%</div>\n' +
+                        '                            <div class="item__description">%description%</div>\n' +
                         '                            <div class="right clearfix">\n' +
                         '                                <div class="item__value">%value%</div>\n' +
                         '                                <div class="item__percentage">21%</div>\n' +
@@ -154,6 +158,19 @@ var UIController = (function(){
                     curr.value = '';
                 });
                 fieldsArr[0].focus();
+            },
+
+            displayBudget: function (obj){
+
+                document.querySelector(DOMstrings.budgetLabel).textContent = obj.budget;
+                document.querySelector(DOMstrings.incomeLabel).textContent = obj.totalInc;
+                document.querySelector(DOMstrings.expensesLabel).textContent = obj.totalExp;
+
+                if (obj.percentage > 0){
+                    document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';
+                } else {
+                    document.querySelector(DOMstrings.percentageLabel).textContent = '---';
+                }
             },
 
             getDOMstrings: function(){
@@ -185,7 +202,7 @@ var controller = (function(budgetCtrl, UICtrl){
 
         budgetCtrl.calculateBudget();
         var budget = budgetCtrl.getBudget();
-
+        UICtrl.displayBudget(budget);
 
     };
 
@@ -204,6 +221,12 @@ var controller = (function(budgetCtrl, UICtrl){
     return {
         init: function(){
             setEventListeners();
+            UICtrl.displayBudget({
+                budget: 0,
+                percentage: -1,
+                totalInc: 0,
+                totalExp: 0
+            })
         }
     }
 
