@@ -387,7 +387,7 @@ var controller = (function(budgetCtrl, UICtrl) {
     
     
     var updatePercentages = function() {
-        
+
         // 1. Calculate percentages
         budgetCtrl.calculatePercentages();
         
