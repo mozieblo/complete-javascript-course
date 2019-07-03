@@ -1,4 +1,3 @@
-/*export default 'I am exported string';*/
 import axios from 'axios';
 
 export default class Search {
@@ -18,3 +17,4 @@ export default class Search {
         }
     }
 }
+
