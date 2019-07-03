@@ -4,8 +4,10 @@ import {elements, renderLoader, clearLoader} from './views/base';
 import * as searchView from './views/searchView';
 
 
-//SEARCH CONTROLLER
+
 const state = {};
+
+//SEARCH CONTROLLER
 
 const controlSearch = async () => {
 
@@ -21,16 +23,17 @@ const controlSearch = async () => {
         renderLoader(elements.searchRes);
 
 
-        await state.search.getResults();
+        try {
+            await state.search.getResults();
 
-        clearLoader();
+            clearLoader();
 
-        searchView.renderResoults(state.search.recipes);
-
-
+            searchView.renderResoults(state.search.recipes);
+        } catch (err) {
+            alert('Something went wrong with search...');
+            clearLoader();
+        }
     }
-
-
 };
 
 
@@ -50,8 +53,29 @@ elements.searchResPages.addEventListener('click', e => {
 
 // RECIPE CONTROLLER
 
-const b = new Recipe(48046);
-b.getRecipe();
-console.log(b);
+const controlRecipe = async () => {
+    const id = window.location.hash.replace('#', '');
+
+    if (id) {
+
+        state.recipe = new Recipe(id);
+
+        try {
+            await state.recipe.getRecipe();
+
+
+            state.recipe.calcTime();
+            state.recipe.calcServings();
+
+
+        } catch (err) {
+            console.log(err);
+            alert('Error processing recipe!');
+        }
+    }
+    console.log(state.recipe);
+};
+
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
 
