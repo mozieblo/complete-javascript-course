@@ -1,7 +1,10 @@
 import Search from './modules/Search';
+import Recipe from './modules/Recipe';
 import {elements, renderLoader, clearLoader} from './views/base';
 import * as searchView from './views/searchView';
 
+
+//SEARCH CONTROLLER
 const state = {};
 
 const controlSearch = async () => {
@@ -45,7 +48,10 @@ elements.searchResPages.addEventListener('click', e => {
     }
 });
 
+// RECIPE CONTROLLER
 
-
+const b = new Recipe(48046);
+b.getRecipe();
+console.log(b);
 
 
