@@ -2,7 +2,7 @@ import Search from './modules/Search';
 import Recipe from './modules/Recipe';
 import {elements, renderLoader, clearLoader} from './views/base';
 import * as searchView from './views/searchView';
-
+import * as recipeView from './views/recipeView';
 
 
 const state = {};
@@ -58,6 +58,9 @@ const controlRecipe = async () => {
 
     if (id) {
 
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
+
         state.recipe = new Recipe(id);
 
         try {
@@ -67,6 +70,13 @@ const controlRecipe = async () => {
 
             state.recipe.calcTime();
             state.recipe.calcServings();
+
+
+            clearLoader();
+            recipeView.renderRecipe(
+                state.recipe,
+                state.likes.isLiked(id)
+            );
 
 
         } catch (err) {
