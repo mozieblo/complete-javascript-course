@@ -61,6 +61,8 @@ const controlRecipe = async () => {
         recipeView.clearRecipe();
         renderLoader(elements.recipe);
 
+        if (state.search) searchView.highlightSelected(id);
+
         state.recipe = new Recipe(id);
 
         try {
@@ -73,10 +75,7 @@ const controlRecipe = async () => {
 
 
             clearLoader();
-            recipeView.renderRecipe(
-                state.recipe,
-                state.likes.isLiked(id)
-            );
+            recipeView.renderRecipe(state.recipe);
 
 
         } catch (err) {
