@@ -5,7 +5,7 @@ export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => elements.searchInput.value ='';
 
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit){
         title.split(' ').reduce((acc, cur) => {
