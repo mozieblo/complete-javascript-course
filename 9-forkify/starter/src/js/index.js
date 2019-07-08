@@ -1,6 +1,7 @@
 import Search from './modules/Search';
 import Recipe from './modules/Recipe';
 import List from './modules/List';
+import Likes from './modules/Likes';
 import {elements, renderLoader, clearLoader} from './views/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
